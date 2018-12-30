@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Thasadith';
+    src: url(./fonts/Thasadith-Bold.ttf) format('truetype');
+    font-weight: 700;
+}
+
+* {
+    font-family: 'Thasadith' !important;
+}
+
+body {
+    margin: 0;
+}
+
+body,
+html,
+#root {
+    height: 100%;
+}
