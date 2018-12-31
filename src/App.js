@@ -9,7 +9,10 @@ import Guide from './images/guide.PNG';
 const styles = theme => ({
     Paper: {
         padding: 20,
-        minHeight: 'calc(100% - 64px - 40px)'
+        minHeight: 'calc(100% - 64px - 40px)',
+        [theme.breakpoints.down('sm')]: {
+            minHeight: 'calc(100% - 54px - 40px)',
+        },
     },
     GamePaper: {
         width: "100%",
@@ -40,7 +43,7 @@ const styles = theme => ({
         height: "100%"
     },
     PlaceholderText: {
-        cursor: 'default',
+        cursor: 'default'
     },
     error: {
         backgroundColor: theme.palette.error.dark
@@ -94,6 +97,16 @@ class App extends Component {
 
     render() {
         const { classes } = this.props;
+        const snackbarProps = {
+            anchorOrigin: {
+                vertical: 'bottom',
+                horizontal: 'left',
+            },
+            open: this.state.open,
+            onClose: () => this.setState({ open: false }),
+            autoHideDuration: 4000
+        };
+
         return (
             <Layout loading={this.state.loading}>
                 <Paper className={classes.Paper}>
@@ -109,7 +122,7 @@ class App extends Component {
                             <Grid item xs={12}>
                                 <Typography variant="body1" className={classes.Text}>
                                     Please type in your steam id, so that a random game can be selected from your game library.
-                                    You can find your steam id from your steam profile's url. You can also use services
+                                    You can find your steam ID from your steam profile's url. You can also use services
                                     like <a href="https://steamidfinder.com/">Steam ID Finder</a> to get your account's ID.
                                 </Typography>
                             </Grid>
@@ -130,18 +143,7 @@ class App extends Component {
                         <Game game={this.state.game} classes={classes} />
                     </Grid>
                 </Paper>
-                <Snackbar
-                    anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                    }}
-                    open={this.state.open}
-                    onClose={() => this.setState({ open: false })}
-                    autoHideDuration={4000}
-                    ContentProps={{
-                        'aria-describedby': 'message-id',
-                    }}
-                >
+                <Snackbar {...snackbarProps}>
                     <SnackbarContent
                         message={this.state.message}
                         className={classes[this.state.messageVariant]}

@@ -1,3 +1,4 @@
+import "@babel/polyfill";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -6,25 +7,20 @@ import 'promise-polyfill/src/polyfill';
 import * as serviceWorker from './serviceWorker';
 import './styles.scss';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import { } from '@material-ui/core/colors';
+import { grey } from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
     palette: {
         primary: {
-            light: '#7a879b',
-            main: '#444d5b',
-            dark: '#323944',
+            light: '#C6C5C5',
+            main: '#686868',
+            dark: '#303030',
             contrastText: '#fff',
         },
-        secondary: {
-            light: '#ff7961',
-            main: '#f44336',
-            dark: '#ba000d',
-            contrastText: '#000',
-        },
+        secondary: grey
     },
     typography: {
-        useNextVariants: true,
+        useNextVariants: true
     },
 });
 
