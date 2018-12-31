@@ -27,7 +27,7 @@ function SimpleAppBar(props) {
             <AppBar position="static" color="primary">
                 {props.loading ? <LinearProgress color="secondary" /> : null}
                 <Toolbar>
-                    <img src={Logo} className={classes.logo} />
+                    <img src={Logo} className={classes.logo} alt="Logo" />
                     <Typography variant="h6" color="inherit">
                         Random Game Selector
                     </Typography>

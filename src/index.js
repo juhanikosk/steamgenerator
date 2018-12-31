@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import 'whatwg-fetch';
+import 'promise-polyfill/src/polyfill';
 import * as serviceWorker from './serviceWorker';
 import './styles.scss';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
@@ -20,6 +22,9 @@ const theme = createMuiTheme({
             dark: '#ba000d',
             contrastText: '#000',
         },
+    },
+    typography: {
+        useNextVariants: true,
     },
 });
 
