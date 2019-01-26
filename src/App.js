@@ -51,7 +51,7 @@ const styles = theme => ({
 });
 
 
-const OWNED_GAMES_API_URL = "https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=4AFAAFA8253B647D06A85F23FBD47149";
+const OWNED_GAMES_API_URL = "https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=17B2935E45B5C192D55E04F9A3EEAF03";
 
 
 class App extends Component {
@@ -75,7 +75,9 @@ class App extends Component {
         event.preventDefault();
         const { value } = event.target[0];
         this.setState({ loading: true });
-        fetch(`${OWNED_GAMES_API_URL}&steamid=${value}&include_appinfo=1&format=json`).then(
+        fetch(`https://cors-anywhere.herokuapp.com/${OWNED_GAMES_API_URL}&steamid=${value}&include_appinfo=1&format=json`, {
+            mode: 'cors'
+        }).then(
             (data) => data.json().then(
                 (json) => {
                     this.setState({ loading: false });
